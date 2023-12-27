@@ -14,6 +14,30 @@
     "functions": [],
     "variables": {},
     "resources": [
+                {
+            "name": "nsg-adds-allow",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "AllowHTTPS",
+                        "properties": {
+                            "description": "AllowHTTPS",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "53",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            }
+        },
         {
             "name": "vnet-test-eus-1",
             "type": "Microsoft.Network/virtualNetworks",
@@ -39,36 +63,6 @@
                         },
                         "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-vm-dc-test-1')]"
-                        }
-                    },
-                    {
-                        "name": "snet-test-eus-2",
-                        "properties": {
-                            "addressPrefix": "10.0.1.0/24"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "nsg-adds-allow",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2023-04-01",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "securityRules": [
-                    {
-                        "name": "AllowHTTPS",
-                        "properties": {
-                            "description": "AllowHTTPS",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "53",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Inbound"
                         }
                     }
                 ]
