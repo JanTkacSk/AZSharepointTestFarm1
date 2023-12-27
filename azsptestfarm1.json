@@ -128,16 +128,16 @@
             }
         },
         {
-            "name": "windowsVM1-NetworkInterface",
+            "name": "nic-01-dc-test-1",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', 'windowsVM1-PublicIP')]",
-                "[resourceId('Microsoft.Network/virtualNetworks', 'windowsVM1-VirtualNetwork')]"
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eastus-1')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-test-eus-1')]"
             ],
             "tags": {
-                "displayName": "windowsVM1 Network Interface"
+                "displayName": "nic-01-dc-test-1"
             },
             "properties": {
                 "ipConfigurations": [
@@ -146,63 +146,14 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'windowsVM1-PublicIP')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eastus-1')]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'windowsVM1-VirtualNetwork', 'windowsVM1-VirtualNetwork-Subnet')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-test-eus-1', 'snet-test-eus-1')]"
                             }
                         }
                     }
                 ]
-            }
-        },
-        {
-            "name": "windowsVM1",
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2023-03-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', toLower('windowsVM1storage'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces', 'windowsVM1-NetworkInterface')]"
-            ],
-            "tags": {
-                "displayName": "windowsVM1"
-            },
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "Standard_A2_v2"
-                },
-                "osProfile": {
-                    "computerName": "windowsVM1",
-                    "adminUsername": "adminUsername",
-                    "adminPassword": "adminPassword"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "2012-R2-Datacenter",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "name": "windowsVM1OSDisk",
-                        "caching": "ReadWrite",
-                        "createOption": "FromImage"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'windowsVM1-NetworkInterface')]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower('windowsVM1storage'))).primaryEndpoints.blob]"
-                    }
-                }
             }
         }
     ],
