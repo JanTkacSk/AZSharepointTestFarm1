@@ -149,6 +149,55 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "VM-DC-TEST-1",
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2023-03-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', toLower(parameters('storageAccName')))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', 'nic-01-dc-test-1')]"
+            ],
+            "tags": {
+                "displayName": "VM-DC-TEST-1"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_B2s"
+                },
+                "osProfile": {
+                    "computerName": "VM-DC-TEST-1",
+                    "adminUsername": "Student",
+                    "adminPassword": "PublicPassword123@!"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2012-R2-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "windowsVM1OSDisk",
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'nic-01-dc-test-1')]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower(parameters('storageAccName')))).primaryEndpoints.blob]"
+                    }
+                }
+            }
         }
     ],
     "outputs": {}
