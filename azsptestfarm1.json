@@ -63,36 +63,12 @@
             }
         },
         {
-            "name": "nsg-vm-dc-test-1",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2023-04-01",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "securityRules": [
-                    {
-                        "name": "nsgRule1",
-                        "properties": {
-                            "description": "description",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "3389",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Inbound"
-                        }
-                    }
-                ]
-            }
-        },
-        {
             "name": "vnet-test-eus-1",
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-vm-dc-test-1')]"
+                "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-adds-allow')]"
             ],
             "tags": {
                 "displayName": "vnet-test-eus-1"
@@ -109,7 +85,7 @@
                         "properties": {
                             "addressPrefix": "10.0.0.0/24",
                             "networkSecurityGroup": {
-                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-vm-dc-test-1')]"
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-adds-allow')]"
                             }
                         }
                     },
