@@ -4,7 +4,7 @@
     "parameters": {
         "storageAccName": {
             "type": "string",
-            "defaultValue": "[toLower(concat('stsp',utcNow('yyyyMMddTHHmmssZ')))]",
+            "defaultValue": "[toLower(concat('stsp',utcNow('yyyyMMddHHmmss')))]",
             "minLength": 3,
             "maxLength": 24,
             "metadata": {
