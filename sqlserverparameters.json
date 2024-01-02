@@ -1,0 +1,194 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "vm-sql-shp-test-1324"
+        },
+        "subnetName": {
+            "value": "snet-test-eus-2"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/ce10d87e-d690-44c6-9dbc-20edd63852c2/resourceGroups/rg-shp-test-eus-1/providers/Microsoft.Network/virtualNetworks/vnet-test-eus-1"
+        },
+        "virtualMachineName": {
+            "value": "VM-SQL-SHP-TEST-1"
+        },
+        "virtualMachineComputerName": {
+            "value": "VM-SQL-SHP-TEST"
+        },
+        "virtualMachineRG": {
+            "value": "rg-shp-test-eus-1"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "deleteOption": "Detach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "VM-SQL-SHP-TEST-1_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 1,
+                    "createOption": "attach",
+                    "deleteOption": "Detach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "VM-SQL-SHP-TEST-1_DataDisk_1",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "VM-SQL-SHP-TEST-1_DataDisk_0",
+                    "sku": "Premium_LRS",
+                    "properties": {
+                        "diskSizeGB": 64,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "VM-SQL-SHP-TEST-1_DataDisk_1",
+                    "sku": "Premium_LRS",
+                    "properties": {
+                        "diskSizeGB": 64,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B2s"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "hibernationEnabled": {
+            "value": false
+        },
+        "adminUsername": {
+            "value": "Student"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "patchMode": {
+            "value": "Manual"
+        },
+        "enableHotpatching": {
+            "value": false
+        },
+        "sqlVirtualMachineLocation": {
+            "value": "eastus"
+        },
+        "sqlVirtualMachineName": {
+            "value": "VM-SQL-SHP-TEST-1"
+        },
+        "sqlConnectivityType": {
+            "value": "Private"
+        },
+        "sqlPortNumber": {
+            "value": 1433
+        },
+        "sqlStorageDisksCount": {
+            "value": 1
+        },
+        "sqlStorageWorkloadType": {
+            "value": "OLTP"
+        },
+        "sqlStorageDisksConfigurationType": {
+            "value": "NEW"
+        },
+        "sqlStorageStartingDeviceId": {
+            "value": 2
+        },
+        "sqlStorageDeploymentToken": {
+            "value": 25804
+        },
+        "dataPath": {
+            "value": "F:\\data"
+        },
+        "dataDisksLUNs": {
+            "value": [
+                0
+            ]
+        },
+        "logPath": {
+            "value": "G:\\log"
+        },
+        "logDisksLUNs": {
+            "value": [
+                1
+            ]
+        },
+        "tempDbPath": {
+            "value": "D:\\tempDb"
+        },
+        "dataFileCount": {
+            "value": 2
+        },
+        "dataFileSize": {
+            "value": 8
+        },
+        "dataGrowth": {
+            "value": 64
+        },
+        "logFileSize": {
+            "value": 8
+        },
+        "logGrowth": {
+            "value": 64
+        },
+        "sqlSystemDbOnDataDisk": {
+            "value": false
+        },
+        "rServicesEnabled": {
+            "value": "false"
+        },
+        "maxdop": {
+            "value": 0
+        },
+        "isOptimizeForAdHocWorkloadsEnabled": {
+            "value": false
+        },
+        "collation": {
+            "value": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "minServerMemoryMB": {
+            "value": 0
+        },
+        "maxServerMemoryMB": {
+            "value": 2147483647
+        },
+        "isLPIMEnabled": {
+            "value": false
+        },
+        "isIFIEnabled": {
+            "value": false
+        }
+    }
+}
