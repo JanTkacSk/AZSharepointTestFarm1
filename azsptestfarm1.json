@@ -131,12 +131,12 @@
             }
         },
         {
-            "name": "pip-dc-eastus-1",
+            "name": "pip-dc-test-eus-1",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "DomainControllerPublicIpAddress"
+                "displayName": "pip-dc-test-eus-1"
             },
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
@@ -146,12 +146,57 @@
             }
         },
         {
+            "name": "pip-sql-shp-test-eus-1",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "pip-sql-shp-test-eus-1"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings": {
+                    "domainNameLabel": "vm-sql-shp-test-eus-1"
+                }
+            }
+        },
+        {
+            "name": "pip-shp-app-test-eus-1",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "pip-shp-app-test-eus-1"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings": {
+                    "domainNameLabel": "dnsname1"
+                }
+            }
+        },
+        {
+            "name": "pip-shp-web-test-eus-1",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "pip-shp-web-test-eus-1"
+            },
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings": {
+                    "domainNameLabel": "dnsname1"
+                }
+            }
+        },
+        {
             "name": "nic-01-dc-test-1",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eastus-1')]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eus-1')]",
                 "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-test-eus-1')]"
             ],
             "tags": {
@@ -164,7 +209,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eastus-1')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eus-1')]"
                             },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-test-eus-1', 'snet-test-eus-1')]"
