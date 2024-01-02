@@ -78,6 +78,14 @@
             }
         },
         {
+            "name": "asg-web-test-1",
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {}
+        },
+        {
             "name": "vnet-test-eus-1",
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2023-04-01",
