@@ -149,7 +149,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "[toLower('VM-DC-TEST-1')]"
+                    "domainNameLabel": "[toLower('vm-dc-test-1')]"
                 }
             }
         },
@@ -164,7 +164,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "vm-sql-shp-test-eus-1"
+                    "domainNameLabel": "vm-sql-shp-test-1"
                 }
             }
         },
@@ -179,7 +179,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "dnsname1"
+                    "domainNameLabel": "vm-shp-app-test-1"
                 }
             }
         },
@@ -194,7 +194,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "dnsname1"
+                    "domainNameLabel": "vm-shp-web-test-1"
                 }
             }
         },
@@ -228,7 +228,7 @@
             }
         }/*,
         {
-            "name": "VM-DC-TEST-1",
+            "name": "vm-dc-test-1",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2023-03-01",
             "location": "[resourceGroup().location]",
@@ -237,14 +237,14 @@
                 "[resourceId('Microsoft.Network/networkInterfaces', 'nic-01-dc-test-1')]"
             ],
             "tags": {
-                "displayName": "VM-DC-TEST-1"
+                "displayName": "vm-dc-test-1"
             },
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_B2s"
                 },
                 "osProfile": {
-                    "computerName": "VM-DC-TEST-1",
+                    "computerName": "vm-dc-test-1",
                     "adminUsername": "Student",
                     "adminPassword": "PublicPassword123@!"
                 },
@@ -256,7 +256,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "VM-DC-TEST-1_OSDisk",
+                        "name": "vm-dc-test-1_OSDisk",
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
