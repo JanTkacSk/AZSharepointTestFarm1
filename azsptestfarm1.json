@@ -217,7 +217,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eus-1')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-test-eus-1')]"
                             },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-test-eus-1', 'snet-test-eus-1')]"
