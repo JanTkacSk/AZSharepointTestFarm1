@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "vm-sql-shp-test-1324"
+            "value": "vm-sql-shp-test-141"
         },
         "subnetName": {
             "value": "snet-test-eus-2"
@@ -14,11 +14,17 @@
         "virtualNetworkId": {
             "value": "/subscriptions/ce10d87e-d690-44c6-9dbc-20edd63852c2/resourceGroups/rg-shp-test-eus-1/providers/Microsoft.Network/virtualNetworks/vnet-test-eus-1"
         },
+        "publicIpAddressId": {
+            "value": "/subscriptions/ce10d87e-d690-44c6-9dbc-20edd63852c2/resourceGroups/rg-shp-test-eus-1/providers/Microsoft.Network/publicIPAddresses/pip-sql-shp-test-eus-1"
+        },
+        "pipDeleteOption": {
+            "value": "Detach"
+        },
         "virtualMachineName": {
-            "value": "VM-SQL-SHP-TEST-1"
+            "value": "vm-sql-shp-test-1"
         },
         "virtualMachineComputerName": {
-            "value": "VM-SQL-SHP-TEST"
+            "value": "vm-sql-shp-test"
         },
         "virtualMachineRG": {
             "value": "rg-shp-test-eus-1"
@@ -38,7 +44,7 @@
                     "caching": "ReadOnly",
                     "writeAcceleratorEnabled": false,
                     "id": null,
-                    "name": "VM-SQL-SHP-TEST-1_DataDisk_0",
+                    "name": "vm-sql-shp-test-1_DataDisk_0",
                     "storageAccountType": null,
                     "diskSizeGB": null,
                     "diskEncryptionSet": null
@@ -50,7 +56,7 @@
                     "caching": "None",
                     "writeAcceleratorEnabled": false,
                     "id": null,
-                    "name": "VM-SQL-SHP-TEST-1_DataDisk_1",
+                    "name": "vm-sql-shp-test-1_DataDisk_1",
                     "storageAccountType": null,
                     "diskSizeGB": null,
                     "diskEncryptionSet": null
@@ -60,20 +66,20 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "name": "VM-SQL-SHP-TEST-1_DataDisk_0",
+                    "name": "vm-sql-shp-test-1_DataDisk_0",
                     "sku": "Premium_LRS",
                     "properties": {
-                        "diskSizeGB": 64,
+                        "diskSizeGB": 1024,
                         "creationData": {
                             "createOption": "empty"
                         }
                     }
                 },
                 {
-                    "name": "VM-SQL-SHP-TEST-1_DataDisk_1",
+                    "name": "vm-sql-shp-test-1_DataDisk_1",
                     "sku": "Premium_LRS",
                     "properties": {
-                        "diskSizeGB": 64,
+                        "diskSizeGB": 1024,
                         "creationData": {
                             "createOption": "empty"
                         }
@@ -106,7 +112,7 @@
             "value": "eastus"
         },
         "sqlVirtualMachineName": {
-            "value": "VM-SQL-SHP-TEST-1"
+            "value": "vm-sql-shp-test-1"
         },
         "sqlConnectivityType": {
             "value": "Private"
@@ -127,7 +133,7 @@
             "value": 2
         },
         "sqlStorageDeploymentToken": {
-            "value": 25804
+            "value": 11091
         },
         "dataPath": {
             "value": "F:\\data"

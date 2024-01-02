@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -12,6 +12,12 @@
             "type": "String"
         },
         "virtualNetworkId": {
+            "type": "String"
+        },
+        "publicIpAddressId": {
+            "type": "String"
+        },
+        "pipDeleteOption": {
             "type": "String"
         },
         "virtualMachineName": {
@@ -161,7 +167,13 @@
                             "subnet": {
                                 "id": "[variables('subnetRef')]"
                             },
-                            "privateIPAllocationMethod": "Dynamic"
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIpAddress": {
+                                "id": "[parameters('publicIpAddressId')]",
+                                "properties": {
+                                    "deleteOption": "[parameters('pipDeleteOption')]"
+                                }
+                            }
                         }
                     }
                 ]
@@ -203,8 +215,8 @@
                         "deleteOption": "[parameters('osDiskDeleteOption')]"
                     },
                     "imageReference": {
-                        "publisher": "microsoftsqlserver",
-                        "offer": "sql2017-ws2019",
+                        "publisher": "MicrosoftSQLServer",
+                        "offer": "SQL2017-WS2016",
                         "sku": "sqldev-gen2",
                         "version": "latest"
                     },
