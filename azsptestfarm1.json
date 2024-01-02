@@ -203,7 +203,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "windowsVM1OSDisk",
+                        "name": "VM-DC-TEST-1_OSDisk",
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
