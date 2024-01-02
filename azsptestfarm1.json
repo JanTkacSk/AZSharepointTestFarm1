@@ -226,7 +226,7 @@
                     }
                 ]
             }
-        },
+        }/*,
         {
             "name": "VM-DC-TEST-1",
             "type": "Microsoft.Compute/virtualMachines",
@@ -275,7 +275,7 @@
                     }
                 }
             }
-        }
+        }*/
     ],
     "outputs": {
         "storageAccountName": {
