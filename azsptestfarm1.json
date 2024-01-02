@@ -204,7 +204,7 @@
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-eus-1')]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-dc-test-eus-1')]",
                 "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-test-eus-1')]"
             ],
             "tags": {
