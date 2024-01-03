@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "vm-sql-shp-test-141"
+            "value": "nic-sql-shp-test-1"
         },
         "subnetName": {
             "value": "snet-test-eus-2"
@@ -69,7 +69,7 @@
                     "name": "vm-sql-shp-test-1_DataDisk_0",
                     "sku": "Premium_LRS",
                     "properties": {
-                        "diskSizeGB": 1024,
+                        "diskSizeGB": 64,
                         "creationData": {
                             "createOption": "empty"
                         }
@@ -79,7 +79,7 @@
                     "name": "vm-sql-shp-test-1_DataDisk_1",
                     "sku": "Premium_LRS",
                     "properties": {
-                        "diskSizeGB": 1024,
+                        "diskSizeGB": 64,
                         "creationData": {
                             "createOption": "empty"
                         }
@@ -100,7 +100,7 @@
             "value": "Student"
         },
         "adminPassword": {
-            "value": null
+            "value": "PublicPassword123@!"
         },
         "patchMode": {
             "value": "Manual"
