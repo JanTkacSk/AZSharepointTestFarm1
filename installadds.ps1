@@ -1,2 +1,2 @@
 Add-WindowsFeature AD-Domain-Services -IncludeManagementTools
-Install-ADDSForest -DomainName 'neverhood.local' -InstallDNS -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText 'PublicPassword123@!' -Force) -Confirm:$false
+Install-ADDSForest -DomainName 'testground.eu' -InstallDNS -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText 'PublicPassword123@!' -Force) -Confirm:$false
