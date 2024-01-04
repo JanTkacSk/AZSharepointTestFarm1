@@ -282,7 +282,7 @@
             "name": "vm-dc-test-1-InstallADDS",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', 'vm-dc-test-1')]"
+                "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
