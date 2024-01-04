@@ -279,7 +279,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-04-01",
-            "name": "Install ADDS and create a domain",
+            "name": "vm-dc-test-1-InstallADDS",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', 'vm-dc-test-1')]"
