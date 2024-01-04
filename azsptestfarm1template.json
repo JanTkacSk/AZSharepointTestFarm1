@@ -226,7 +226,7 @@
                     }
                 ]
             }
-        }/*,
+        },
         {
             "name": "vm-dc-test-1",
             "type": "Microsoft.Compute/virtualMachines",
@@ -275,7 +275,28 @@
                     }
                 }
             }
-        }*/
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2021-04-01",
+            "name": "Install ADDS and create a domain",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', 'vm-dc-test-1')]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                "fileUris": [
+                    "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/installadds.ps1"
+                ],
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1"
+                }
+            }
+        }
     ],
     "outputs": {
         "storageAccountName": {
