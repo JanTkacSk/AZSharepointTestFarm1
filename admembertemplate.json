@@ -27,7 +27,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-admember-test-eus-1')]",
-                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-test-eus-1')]"
+
             ],
             "tags": {
                 "displayName": "nic-admember-test-1"
@@ -42,7 +42,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'ip-admember-test-eus-1')]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'windowsVM1-VirtualNetwork', 'snet-test-eus-2')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets','snet-test-eus-2')]"
                             }
                         }
                     }
@@ -93,7 +93,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": false,
-                        "apiVersion": "2023-01-01"
+                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', toLower('stsp20240105214953'))).primaryEndpoints.blob]"
                     }
                 }
             }
