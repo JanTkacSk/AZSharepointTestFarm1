@@ -27,7 +27,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-admember-test-eus-1')]",
-
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-test-eus-1')]"
             ],
             "tags": {
                 "displayName": "nic-admember-test-1"
