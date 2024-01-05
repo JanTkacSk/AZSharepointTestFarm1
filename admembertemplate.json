@@ -93,8 +93,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": false,
-                        "apiVersion": "2023-01-01",
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts','2023-01-01',toLower('stsp20240105214953'))).primaryEndpoints.blob]"
+                        "apiVersion": "2023-01-01"
                     }
                 }
             }
