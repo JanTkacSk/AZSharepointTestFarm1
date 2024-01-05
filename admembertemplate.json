@@ -38,7 +38,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'ip-admember-test-eus-1')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-admember-test-eus-1')]"
                             },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets','vnet-test-eus-1','snet-test-eus-2')]"
