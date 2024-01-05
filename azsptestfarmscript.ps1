@@ -9,5 +9,5 @@ $TemplateFileUri = "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTest
 $TemplateFile = ".\VSCode\AZSharepointTestFarm1\sqlservertemplate.json"
 $ParameterFile = ".\VSCode\AZSharepointTestFarm1\sqlserverparameters.json"
 
-New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $TemplateUri -TemplateParameterFile $ParameterFile
+New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateUri $TemplateFileUri -TemplateParameterUri $ParameterFileUri
 #Remove-AzResourceGroup -Name $RGName -Force
