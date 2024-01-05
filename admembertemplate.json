@@ -55,7 +55,7 @@
             "apiVersion": "2023-03-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts@2023-01-01', toLower(resourceGroup().location))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', toLower('stsp20240105214953'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', 'nic-admember-test-1')]"
             ],
             "tags": {
@@ -92,7 +92,7 @@
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
-                        "enabled": true,
+                        "enabled": false,
                         "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower('stsp20240105214953'))).primaryEndpoints.blob]"
                     }
                 }
