@@ -64,7 +64,7 @@
                     "vmSize": "Standard_A2_v2"
                 },
                 "osProfile": {
-                    "computerName": "vm-admember-test-1",
+                    "computerName": "admember-test-1",
                     "adminUsername": "Student",
                     "adminPassword": "PublicPassword123@!"
                 },
