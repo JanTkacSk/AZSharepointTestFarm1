@@ -5,7 +5,7 @@
     "functions": [],
     "variables": {},
     "resources": [
-        {
+     /*   {
             "name": "vm-shp-app-test-1203",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2023-04-01",
@@ -48,7 +48,7 @@
                     }
                 ]
             }
-        },
+        },*/
         {
             "name": "nic-01-dc-test-1",
             "type": "Microsoft.Network/networkInterfaces",
