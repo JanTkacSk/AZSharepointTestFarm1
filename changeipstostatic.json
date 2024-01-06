@@ -8,7 +8,7 @@
 ],
     "outputs": {
         "masterip": {
-        "value": "[reference(resourceId('Microsoft.Network/networkInterfaces','nic-01-dc-test-1'),'2023-04-01').ipConfigurations[0].properties.privateIPAddress]",
+        "value": "[reference(resourceId('Microsoft.Network/networkInterfaces','nic-01-dc-test-1'),'2023-04-01').properties]",
         "type": "string"
         }
     }
