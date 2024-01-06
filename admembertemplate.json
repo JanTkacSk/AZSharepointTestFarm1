@@ -6,30 +6,30 @@
     "variables": {},
     "resources": [
         {
-            "name": "pip-admember-test-eus-1",
+            "name": "pip-am-test-eus-1",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "pip-admember-test-eus-1"
+                "displayName": "pip-am-test-eus-1"
             },
             "properties": {
-                "publicIPAllocationMethod": "Dynamic",
+                "publicIPAllocationMethod": "Static",
                 "dnsSettings": {
-                    "domainNameLabel": "[toLower('vm-admember-test-1')]"
+                    "domainNameLabel": "[toLower('vm-am-test-1')]"
                 }
             }
         },
         {
-            "name": "nic-admember-test-1",
+            "name": "nic-am-test-1",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2023-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-admember-test-eus-1')]"            
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-am-test-eus-1')]"            
                 ],
             "tags": {
-                "displayName": "nic-admember-test-1"
+                "displayName": "nic-am-test-1"
             },
             "properties": {
                 "ipConfigurations": [
@@ -38,7 +38,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-admember-test-eus-1')]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-am-test-eus-1')]"
                             },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets','vnet-test-eus-1','snet-test-eus-2')]"
@@ -49,22 +49,22 @@
             }
         },
         {
-            "name": "vm-admember-test-1",
+            "name": "vm-am-test-1",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2023-03-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', 'nic-admember-test-1')]"
+                "[resourceId('Microsoft.Network/networkInterfaces', 'nic-am-test-1')]"
             ],
             "tags": {
-                "displayName": "vm-admember-test-1"
+                "displayName": "vm-am-test-1"
             },
             "properties": {
                 "hardwareProfile": {
                     "vmSize": "Standard_A2_v2"
                 },
                 "osProfile": {
-                    "computerName": "admembertest1",
+                    "computerName": "vm-am-test-1",
                     "adminUsername": "Student",
                     "adminPassword": "PublicPassword123@!"
                 },
@@ -76,7 +76,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "vm-admember-test-osdisk-1",
+                        "name": "vm-am-test-osdisk-1",
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
@@ -84,7 +84,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'nic-admember-test-1')]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', 'nic-am-test-1')]"
                         }
                     ]
                 },
