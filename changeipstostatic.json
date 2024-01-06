@@ -1,7 +1,12 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "privateIp": {
+            "type": "string",
+            "value": "[reference(concat(‘Microsoft.Network/networkInterfaces/’, variables(‘nic-01-dc-test-1’))).ipConfigurations[0].properties.privateIPAddress]"
+          }
+    },
     "functions": [],
     "variables": {},
     "resources": [
@@ -63,6 +68,7 @@
                         "name": "ipConfig1",
                         "properties": {
                             "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('privateIp')]",
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-test-eus-1', 'snet-test-eus-1')]"
                             }
