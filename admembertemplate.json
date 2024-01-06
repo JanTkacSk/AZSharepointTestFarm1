@@ -14,7 +14,7 @@
                 "displayName": "pip-am-test-eus-1"
             },
             "properties": {
-                "publicIPAllocationMethod": "Static",
+                "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
                     "domainNameLabel": "[toLower('vm-am-test-1')]"
                 }
