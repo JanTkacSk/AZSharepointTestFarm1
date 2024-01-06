@@ -7,7 +7,7 @@
     "resources": [],
     "outputs": {
         "masterip": {
-        "value": "[reference(concat('nic-01-dc-test-1',0)).ipConfigurations[0].properties.privateIPAddress]",
+        "value": "[reference(concat('nic-01-dc-test-1')).ipConfigurations[0].properties.privateIPAddress]",
         "type": "string"
         }
     }
