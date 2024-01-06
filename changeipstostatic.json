@@ -3,8 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "privateIp": {
-            "type": "string",
-            "defaultValue": "[reference(concat('Microsoft.Network/networkInterfaces/', 'nic-01-dc-test-1')).ipConfigurations[0].properties.privateIPAddress]"
+            "type": "string"
           }
     },
     "functions": [],
