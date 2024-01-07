@@ -1,0 +1,1 @@
+[PSCredential]::new($jtkac, $(ConvertTo-SecureString -String "mypass" -AsPlainText -Force))
