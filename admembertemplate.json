@@ -1,7 +1,22 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "username": {
+            "type": "string",
+            "defaultValue": "Student",
+            "metadata": {
+                "description": "description"
+            }
+        },
+        "password": {
+            "defaultValue": "PublicPassword",
+            "type": "securestring",
+            "metadata": {
+                "description": "description"
+            }
+        }
+    },
     "functions": [],
     "variables": {},
     "resources": [
@@ -91,6 +106,32 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": false                    }
+                }
+            }
+        },
+        {
+            "name": "windowsVM1/customScript1",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2023-03-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "customScript1 for Windows VM"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', 'windowsVM1')]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.10",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
+                    ]
+                },
+                "protectedSettings": {
+                    "commandToExecute": "[]"
                 }
             }
         }
