@@ -10,7 +10,7 @@
             }
         },
         "password": {
-            "defaultValue": "PublicPassword",
+            "defaultValue": "PublicPassword123@!",
             "type": "securestring",
             "metadata": {
                 "description": "description"
