@@ -108,7 +108,8 @@
                         "enabled": false                    }
                 }
             }
-        },
+        }
+        /*
         {
             "name": "windowsVM1/customScript1",
             "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -118,7 +119,7 @@
                 "displayName": "customScript1 for Windows VM"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', 'windowsVM1')]"
+                "[resourceId('Microsoft.Compute/virtualMachines', 'vm-am-test-1')]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -131,10 +132,11 @@
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "[]"
+                    "commandToExecute": ""
                 }
             }
         }
+        */
     ],
     "outputs": {}
 }
