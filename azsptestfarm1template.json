@@ -227,6 +227,7 @@
                 ]
             }
         },
+        /*
         {
             "name": "vm-dc-test-1",
             "type": "Microsoft.Compute/virtualMachines",
@@ -294,6 +295,26 @@
                     "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/installadds.ps1"
                 ],
                 "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1"
+                }
+            }
+        },*/
+        {
+            "name": "linkedDeployment1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces/', 'nic-01-dc-test-1')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri":"https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/ipallocationchange.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "privateIP": {
+                        "value": "[reference(concat('Microsoft.Network/networkInterfaces/','nic-01-dc-test-1')).ipConfigurations[0].properties.privateIPAddress]"
+                    }
                 }
             }
         }
