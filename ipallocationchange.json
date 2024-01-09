@@ -21,7 +21,6 @@
                 "displayName": "networkInterface1"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', 'virtualNetwork1')]"
             ],
             "properties": {
                 "ipConfigurations": [
