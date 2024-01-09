@@ -13,6 +13,7 @@
         },
         "privateIP": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
                 "description": "description"
             }
