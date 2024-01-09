@@ -10,13 +10,6 @@
             "metadata": {
                 "description": "The name of the storage account for the sharepoint env."
             }
-        },
-        "privateIP": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "description"
-            }
         }
     },
     "functions": [],
