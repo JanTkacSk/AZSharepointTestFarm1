@@ -6,10 +6,11 @@
 [parameter(Mandatory=$true)]
 [securestring]$Password
 
-)#>
+)
 
 $Credential = [PSCredential]::new($Username, $Password)
 Add-Computer -Domain testground.eu -Credential $Credential
+#>
 
 $UserName = "Student"
 $Password = "PublicPassword123@!"
