@@ -234,7 +234,6 @@
                 ]
             }
         },
-        /*
         {
             "name": "vm-dc-test-1",
             "type": "Microsoft.Compute/virtualMachines",
@@ -304,7 +303,7 @@
                 "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1"
                 }
             }
-        },*/
+        },
         {
             "name": "linkedDeployment1",
             "type": "Microsoft.Resources/deployments",

@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+                {
+            "name": "vnet-test-eus-1",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2023-04-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+            ],
+            "tags": {
+                "displayName": "vnet-test-eus-1"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "snet-test-eus-1",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-adds-allow')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "snet-test-eus-2",
+                        "properties": {
+                            "addressPrefix": "10.0.1.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-web-allow')]"
+                            }                          
+                        }
+                    }
+                ],
+                "dhcpOptions":{
+                    "dnsServers":[
+                        "[reference(concat('Microsoft.Network/networkInterfaces/','nic-01-dc-test-1'),'2023-04-01').ipConfigurations[0].properties.privateIPAddress]"
+                    ]
+                }
+            }
+        },
+
+    ],
+    "outputs": {}
+}
