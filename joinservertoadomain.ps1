@@ -14,7 +14,7 @@ Add-Computer -Domain testground.eu -Credential $Credential
 
 Start-Transcript -Path c:\transcript.txt
 
-$UserName = "Student"
+$UserName = "testgroup.eu\Student"
 $Password = "PublicPassword123@!"
 $Credential = [PSCredential]::new($UserName, $(ConvertTo-SecureString -String $Password -AsPlainText -Force))
 Add-Computer -Domain testground.eu -Credential $Credential
