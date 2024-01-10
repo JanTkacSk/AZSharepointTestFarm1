@@ -125,6 +125,7 @@
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.10",
                 "autoUpgradeMinorVersion": true,
+                "forceUpdateTag": true,
                 "settings": {
                     "fileUris": [
                         "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
