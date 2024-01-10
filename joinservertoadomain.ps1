@@ -13,6 +13,7 @@ Add-Computer -Domain testground.eu -Credential $Credential
 #>
 
 Start-Transcript -Path c:\transcript.txt
+New-Item -Path c:\test.txt
 
 $UserName = "Student"
 $Password = "PublicPassword123@!"

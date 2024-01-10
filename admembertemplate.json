@@ -128,11 +128,10 @@
                 "settings": {
                     "fileUris": [
                         "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
-                    ],
-                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File joinservertoadomain.ps1"
+                    ]
                 },
                 "protectedSettings": {
-                    
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File joinservertoadomain.ps1"
                 }
             }
         }
