@@ -8,6 +8,13 @@
         "networkInterfaceName": {
             "type": "String"
         },
+        "privateIP": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "description"
+            }
+        },
         "subnetName": {
             "type": "String"
         },
@@ -248,7 +255,119 @@
                     "emailRecipient": "[parameters('autoShutdownNotificationEmail')]"
                 }
             }
+        },
+{
+    "name": "StaticPrivateIPAllocation",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2022-09-01",
+    "dependsOn": [],
+    "properties": {
+        "expressionEvaluationOptions": {
+            "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+            "privateIP": {
+                "value": "[reference(concat('Microsoft.Network/networkInterfaces/', 'vm-shp-app-test-1203').ipConfigurations[0].properties.privateIPAddress)]"
+            },
+            "networkInterfaceName": {
+                "value": "[parameters('networkInterfaceName')]"
+            },
+            "location": {
+                "value": "[parameters('location')]"
+            },
+            "virtualNetworkId": {
+                "value": "[parameters('virtualNetworkId')]"
+            },
+            "publicIpAddressName": {
+                "value": "[parameters('publicIpAddressName')]"
+            },
+            "pipDeleteOption": {
+                 "value": "[parameters('pipDeleteOption')]"
+            },
+            "subnetName": {
+                "value": "[parameters('subnetName')]"
+            }
+
+        },
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "privateIP": {
+                    "type": "string",
+                    "metadata": {
+                        "description": "description"
+                    }
+                },
+                "networkInterfaceName": {
+                    "type": "string",
+                    "metadata": {
+                        "description": "description"
+                    }
+                },
+                "location": {
+                    "type": "string",
+                    "metadata": {
+                        "description": "description"
+                    }
+                },
+                "virtualNetworkId": {
+                    "type": "String"
+                },
+                "publicIpAddressName": {
+                    "type": "String"
+                },
+                "pipDeleteOption": {
+                    "type": "String"
+                },
+                "subnetName": {
+                    "type": "String"
+                }
+
+
+
+            },
+            "variables": {
+                        "vnetId": "[parameters('virtualNetworkId')]",
+                        "vnetName": "[last(split(variables('vnetId'), '/'))]",
+                        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
+
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.Network/networkInterfaces",
+                    "apiVersion": "2022-11-01",
+                    "name": "[parameters('networkInterfaceName')]",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [
+                    ],
+                    "properties": {
+                        "ipConfigurations": [
+                            {
+                                "name": "ipconfig1",
+                                "properties": {
+                                    "subnet": {
+                                        "id": "[variables('subnetRef')]"
+                                    },
+                                    "privateIPAllocationMethod": "Static",
+                                    "privateIPAddress": "[parameters('privateIp')]",
+                                    "publicIpAddress": {
+                                        "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]",
+                                        "properties": {
+                                            "deleteOption": "[parameters('pipDeleteOption')]"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": {}
         }
+    }
+}
     ],
     "outputs": {
         "adminUsername": {
