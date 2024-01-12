@@ -87,7 +87,7 @@
             "value": "Student"
         },
         "adminPassword": {
-            "value": null
+            "value": "PublicPassword123@!"
         },
         "patchMode": {
             "value": "Manual"

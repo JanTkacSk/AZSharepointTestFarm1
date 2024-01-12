@@ -268,7 +268,7 @@
         "mode": "Incremental",
         "parameters": {
             "privateIP": {
-                "value": "[reference(concat('Microsoft.Network/networkInterfaces/', 'vm-shp-app-test-1203').ipConfigurations[0].properties.privateIPAddress)]"
+                "value": "[reference(concat('Microsoft.Network/networkInterfaces/', 'vm-shp-app-test-1203')).ipConfigurations[0].properties.privateIPAddress]"
             },
             "networkInterfaceName": {
                 "value": "[parameters('networkInterfaceName')]"
