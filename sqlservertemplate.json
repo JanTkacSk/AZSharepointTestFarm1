@@ -2,6 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "privateIP": {
+            "type": "String",
+            "defaultValue": ""
+        },
         "location": {
             "type": "String"
         },
@@ -327,6 +331,101 @@
                         "isLPIMEnabled": "[parameters('isLPIMEnabled')]",
                         "isIFIEnabled": "[parameters('isIFIEnabled')]"
                     }
+                }
+            }
+        },
+        {
+            "name": "StaticPrivateIPAllocation",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                    "virtualNetworkId": {
+                        "type": "String"
+                    },
+                    "subnetName": {
+                        "type": "String"
+                    },
+                    "publicIpAddressId": {
+                        "type": "String"
+                    },
+                    "pipDeleteOption": {
+                        "type": "String"
+                    },
+                    "location": {
+                        "type": "String"
+                    },
+                    "networkInterfaceName": {
+                        "type": "String"
+                    },
+                    "privateIP": {
+                        "value": "[reference(concat('Microsoft.Network/networkInterfaces/', 'nic-sql-shp-test-1')).ipConfigurations[0].properties.privateIPAddress]"
+                    }
+                },
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "virtualNetworkId": {
+                            "type": "String"
+                        },
+                        "subnetName": {
+                            "type": "String"
+                        },
+                        "publicIpAddressId": {
+                            "type": "String"
+                        },
+                        "pipDeleteOption": {
+                            "type": "String"
+                        },
+                        "location": {
+                            "type": "String"
+                        },
+                        "networkInterfaceName": {
+                            "type": "String"
+                        },
+                        "privateIP": {
+                            "type": "string"
+                        }
+                    },
+                    "variables": {
+                        "vnetId": "[parameters('virtualNetworkId')]",
+                        "vnetName": "[last(split(variables('vnetId'), '/'))]",
+                        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/networkInterfaces",
+                            "apiVersion": "2022-11-01",
+                            "name": "[parameters('networkInterfaceName')]",
+                            "location": "[parameters('location')]",
+                            "dependsOn": [],
+                            "properties": {
+                                "ipConfigurations": [
+                                    {
+                                        "name": "ipconfig1",
+                                        "properties": {
+                                            "subnet": {
+                                                "id": "[variables('subnetRef')]"
+                                            },
+                                            "privateIPAllocationMethod": "Static",
+                                            "publicIpAddress": {
+                                                "id": "[parameters('publicIpAddressId')]",
+                                                "properties": {
+                                                    "deleteOption": "[parameters('pipDeleteOption')]"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "outputs": {}
                 }
             }
         }
