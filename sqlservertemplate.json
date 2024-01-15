@@ -345,22 +345,22 @@
                 "mode": "Incremental",
                 "parameters": {
                     "virtualNetworkId": {
-                        "type": "String"
+                        "value": "[parameters('virtualNetworkId')]"
                     },
                     "subnetName": {
-                        "type": "String"
+                        "value": "[parameters('subnetName')]"
                     },
                     "publicIpAddressId": {
-                        "type": "String"
+                        "value": "[parameters('publicIpAddressId')]"
                     },
                     "pipDeleteOption": {
-                        "type": "String"
+                        "value": "[parameters('pipDeleteOption')]"
                     },
                     "location": {
-                        "type": "String"
+                        "value": "[parameters('location')]"
                     },
                     "networkInterfaceName": {
-                        "type": "String"
+                        "value": "[parameters('networkInterfaceName')]"
                     },
                     "privateIP": {
                         "value": "[reference(concat('Microsoft.Network/networkInterfaces/', 'nic-sql-shp-test-1')).ipConfigurations[0].properties.privateIPAddress]"
