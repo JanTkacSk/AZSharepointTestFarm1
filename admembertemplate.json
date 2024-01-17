@@ -51,7 +51,8 @@
                     {
                         "name": "ipConfig1",
                         "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "10.0.1.9",
                             "publicIPAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-am-test-eus-1')]"
                             },
