@@ -128,12 +128,11 @@
                 "forceUpdateTag": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1",
-                        "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/IPConfiguration.ps1"
+                        "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File joinservertoadomain.ps1 && powershell.exe -ExecutionPolicy Unrestricted -File IPConfiguration.ps1"
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File joinservertoadomain.ps1"
                 }
             }
         }
