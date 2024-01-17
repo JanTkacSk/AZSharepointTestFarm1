@@ -1,1 +1,0 @@
-Get-NetAdapter | Out-File C:\NetAdapterOutput.txt
