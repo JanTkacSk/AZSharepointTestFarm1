@@ -1,7 +1,8 @@
 $DNSServers = @("10.0.0.4")
-$NICAlias = "Wi-Fi"
-$IPConfig = Get-NetIPAddress -InterfaceAlias $NICAlias -AddressFamily IPv4 | Select-Object IPAddress,PrefixLength
-$DefaultGateway = (Get-NetIPConfiguration -InterfaceAlias Wi-Fi).IPv4DefaultGateway.NextHop
-$IPAddress = New-NetIPAddress -InterfaceAlias $NICAlias -IPAddress $IPConfig.IPAddress -AddressFamily IPv4 -DefaultGateway $DefaultGateway
-Set-NetIPAddress -InterfaceAlias $NICAlias -IPAddress $IPAddress -PrefixLength $IPConfig.PrefixLength -PrefixOrigin Manual
-Set-DnsClientServerAddress -InterfaceAlias $NICAlias -Addresses $DNSServers
+$NetIPAddress = Get-NetIPAddress -AddressFamily IPv4 -PrefixOrigin Dhcp
+$NIAlias = $NetIPAddress.InterfaceAlias
+$DefaultGateway = (Get-NetIPConfiguration -InterfaceAlias $NIAlias).IPv4DefaultGateway.NextHop
+Remove-NetIPAddress -InterfaceAlias $NIAlias -AddressFamily IPv4 -DefaultGateway $DefaultGateway
+$IPAddress = New-NetIPAddress -InterfaceAlias $NIAlias -IPAddress $($NetIPAddress.IPAddress) -AddressFamily IPv4 -DefaultGateway $DefaultGateway -PrefixLength $($NetIPAddress.PrefixLength)
+Set-NetIPAddress -InterfaceAlias $NIAlias -IPAddress $IPAddress -PrefixLength $($NetIPAddress.PrefixLength) -PrefixOrigin Manual
+Set-DnsClientServerAddress -InterfaceAlias $NIAlias -Addresses $DNSServers
