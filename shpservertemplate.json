@@ -362,9 +362,14 @@
                             }
                         ]
                     }
-                },
+                }
+            ],
+            "outputs": {}
+        }
+    }
+},
                 {
-                    "name": "vm-shp-app-t-1/configureSHPVM",
+                    "name": "[format('{0}/{1}', parameters('virtualMachineName'), 'JoinADomain')]",
                     "type": "Microsoft.Compute/virtualMachines/extensions",
                     "apiVersion": "2023-03-01",
                     "location": "[resourceGroup().location]",
@@ -372,7 +377,7 @@
                         "displayName": "customScript1 for Windows VM"
                     },
                     "dependsOn": [
-                        "[resourceId('Microsoft.Compute/virtualMachines', 'vm-shp-app-t-1')]",
+                        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
                         "[resourceId('Microsoft.Resources/deployments', 'StaticPrivateIPAllocation')]"
                     ],
                     "properties": {
@@ -386,15 +391,11 @@
                             ]
                         },
                         "protectedSettings": {
-                            "commandToExecute": "powershell -ExecutionPolicy Bypass -file customScript.ps1"
+                            "commandToExecute": "powershell -ExecutionPolicy Bypass -file joinservertoadomain.ps1"
                         }
                     }
                 }
-            ],
-            "outputs": {}
-        }
-    }
-}
+
     ],
     "outputs": {
         "adminUsername": {
