@@ -430,7 +430,7 @@
             }
         },
         {
-            "name": "windowsVM1/ConfigureTheSQLMachine",
+            "name": "vm-sql-shp-test-1/ConfigureTheSQLMachine",
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2023-03-01",
             "location": "[resourceGroup().location]",
@@ -438,7 +438,8 @@
                 "displayName": "customScript1 for Windows VM"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', 'vm-sql-shp-test-1')]"
+                "[resourceId('Microsoft.Compute/virtualMachines', 'vm-sql-shp-test-1')]",
+                "[resourceId('Microsoft.Resources/deployments', 'StaticPrivateIPAllocation')]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -447,7 +448,7 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "[concat('artifactsLocation', '/scripts/customScript.ps1', 'artifactsLocationSasToken')]"
+                        "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
                     ]
                 },
                 "protectedSettings": {
