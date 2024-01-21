@@ -27,10 +27,10 @@
             "value": "Detach"
         },
         "virtualMachineName": {
-            "value": "vm-shp-app-test-1"
+            "value": "vm-shp-app-t-1"
         },
         "virtualMachineComputerName": {
-            "value": "vm-shp-app-test"
+            "value": "vm-shp-app-t-1"
         },
         "virtualMachineRG": {
             "value": "rg-shp-test-eus-1"
