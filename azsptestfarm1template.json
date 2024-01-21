@@ -301,7 +301,7 @@
                 "fileUris": [
                     "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/installadds.ps1"
                 ],
-                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File joinservertoadomain.ps1"
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1"
                 }
             }
         }
