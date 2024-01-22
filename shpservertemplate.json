@@ -387,11 +387,12 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "fileUris": [
-                                "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1"
+                                "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/joinservertoadomain.ps1",
+                                "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/CreateSHPFarm.ps1"
                             ]
                         },
                         "protectedSettings": {
-                            "commandToExecute": "powershell -ExecutionPolicy Bypass -file joinservertoadomain.ps1"
+                            "commandToExecute": "powershell -ExecutionPolicy Bypass -file joinservertoadomain.ps1 && powershell -ExecutionPolicy Bypass -file CreateSHPFarm.ps1"
                         }
                     }
                 }

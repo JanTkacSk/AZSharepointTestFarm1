@@ -1,0 +1,117 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "vm-shp-web-test-1203"
+        },
+        "subnetName": {
+            "value": "snet-test-eus-2"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/ce10d87e-d690-44c6-9dbc-20edd63852c2/resourceGroups/rg-shp-test-eus-1/providers/Microsoft.Network/virtualNetworks/vnet-test-eus-1"
+        },
+        "publicIpAddressName": {
+            "value": "vm-shp-web-test-1-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Standard"
+        },
+        "pipDeleteOption": {
+            "value": "Detach"
+        },
+        "virtualMachineName": {
+            "value": "vm-shp-web-t-1"
+        },
+        "virtualMachineComputerName": {
+            "value": "vm-shp-web-t-1"
+        },
+        "virtualMachineRG": {
+            "value": "rg-shp-test-eus-1"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "osDiskSizeGiB": {
+            "value": 128
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "deleteOption": "Detach",
+                    "caching": "None",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "vm-shp-web-test-1_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "vm-shp-web-test-1_DataDisk_0",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 128,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B4ms"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "hibernationEnabled": {
+            "value": false
+        },
+        "adminUsername": {
+            "value": "Student"
+        },
+        "adminPassword": {
+            "value": "PublicPassword123@!"
+        },
+        "patchMode": {
+            "value": "Manual"
+        },
+        "enableHotpatching": {
+            "value": false
+        },
+        "autoShutdownStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownTime": {
+            "value": "22:00"
+        },
+        "autoShutdownTimeZone": {
+            "value": "UTC"
+        },
+        "autoShutdownNotificationStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownNotificationLocale": {
+            "value": "en"
+        },
+        "autoShutdownNotificationEmail": {
+            "value": "jan.tkac.sk@gmail.com"
+        }
+    }
+}
