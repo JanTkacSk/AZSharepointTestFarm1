@@ -1,21 +1,19 @@
 #Configuration Settings
-$DatabaseServer = "vm-shp-app-t-1"
+$DatabaseServer = "vm-sql-shp-test"
 $ConfigDatabase = "shp-t-1_config"
 $AdminContentDB = "shp-t-1_admin"
-$Passphrase = "PublicPassword123@!"
-$FarmAccountName = "tesground\Student"
+$FarmAccountName = "Student"
 $Password = "PublicPassword123@!"
 $ServerRole="ApplicationWithSearch"
 
 $Credentials = [PSCredential]::new($FarmAccountName, $(ConvertTo-SecureString -String $Password -AsPlainText -Force))
  
 #Get the Farm Account Credentials
-$FarmAccount = Get-Credential $FarmAccountName
-$Passphrase = (ConvertTo-SecureString $Passphrase -AsPlainText -force)
+$Passphrase = (ConvertTo-SecureString $Password -AsPlainText -force)
    
 #Create SharePoint Farm
 Write-Host "Creating Configuration Database and Central Admin Content Database..."
-New-SPConfigurationDatabase -DatabaseServer $DatabaseServer -DatabaseName $ConfigDatabase -AdministrationContentDatabaseName $AdminContentDB -Passphrase $Passphrase -FarmCredentials $Credential -LocalServerRole $ServerRole
+New-SPConfigurationDatabase -DatabaseServer $DatabaseServer -DatabaseName $ConfigDatabase -AdministrationContentDatabaseName $AdminContentDB -Passphrase $Passphrase -FarmCredentials $Credentials -LocalServerRole $ServerRole
  
 $Farm = Get-SPFarm -ErrorAction SilentlyContinue -ErrorVariable err 
 if ($Farm -ne $null)
