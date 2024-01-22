@@ -1,0 +1,30 @@
+#Configuration Settings
+$DBServer = "vm-shp-app-t-1"
+$ConfigDatabase = "shp-t-1_config"
+$Passphrase = "PublicPassword123@!"
+$ServerRole="WebFrontEndWithDistributedCache"
+ 
+$ServerRole="Application"
+#"Custom","WebFrontEnd","Application","DistributedCache","SingleServerFarm","Search","ApplicationWithSearch","WebFrontEndWithDistributedCache"
+ 
+Connect-SPConfigurationDatabase -DatabaseServer $DBServer -DatabaseName $ConfigDatabase -PassPhrase $Passphrase -LocalServerRole $ServerRole
+  
+Write-Host "Installing SharePoint Resources..."
+Initialize-SPResourceSecurity
+  
+Write-Host "Installing Farm Services ..."
+Install-SPService
+  
+Write-Host "Installing SharePoint Features..."
+Install-SPFeature -AllExistingFeatures
+  
+Write-Host "Installing Help..."
+Install-SPHelpCollection -All 
+  
+Write-Host "Installing Application Content..."
+Install-SPApplicationContent
+   
+Write-Host "Joined the Server to Farm Successfully!"
+
+
+#Read more: https://www.sharepointdiary.com/2016/12/create-sharepoint-2016-farm-using-powershell.html#ixzz8PXJ2IpZC
