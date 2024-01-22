@@ -10,7 +10,9 @@ $Credentials = [PSCredential]::new($FarmAccountName, $(ConvertTo-SecureString -S
  
 #Get the Farm Account Credentials
 $Passphrase = (ConvertTo-SecureString $Password -AsPlainText -force)
-   
+
+Add-LocalGroupMember -Group "Administrators" -Member "testground\SPAdminAcc"
+
 #Create SharePoint Farm
 Write-Host "Creating Configuration Database and Central Admin Content Database..."
 Add-Pssnapin *SharePoint* -ErrorAction SilentlyContinue
