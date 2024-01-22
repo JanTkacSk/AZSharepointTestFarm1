@@ -13,6 +13,7 @@ $Passphrase = (ConvertTo-SecureString $Password -AsPlainText -force)
    
 #Create SharePoint Farm
 Write-Host "Creating Configuration Database and Central Admin Content Database..."
+Add-Pssnapin *SharePoint* -ErrorAction SilentlyContinue
 New-SPConfigurationDatabase -DatabaseServer $DatabaseServer -DatabaseName $ConfigDatabase -AdministrationContentDatabaseName $AdminContentDB -Passphrase $Passphrase -FarmCredentials $Credentials -LocalServerRole $ServerRole
  
 $Farm = Get-SPFarm -ErrorAction SilentlyContinue -ErrorVariable err 
