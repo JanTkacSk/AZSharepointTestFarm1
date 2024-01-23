@@ -307,9 +307,9 @@
         }
     ],
     "outputs": {
-        "storageAccountName": {
+        /*"storageAccountName": {
             "type": "string",
             "value": "[parameters('storageAccName')]"
-        }
+        }*/
     }
 }
