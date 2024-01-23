@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccName": {
+       /* "storageAccName": {
             "type": "string",
             "defaultValue": "[toLower(concat('stsp',utcNow('yyyyMMddHHmmss')))]",
             "minLength": 3,
@@ -10,7 +10,7 @@
             "metadata": {
                 "description": "The name of the storage account for the sharepoint env."
             }
-        },
+        },*/
         "privateIP": {
             "type": "string",
             "defaultValue": "",
@@ -131,7 +131,7 @@
                 ]
             }
         },
-        {
+        /*{
             "name": "[parameters('storageAccName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
@@ -144,7 +144,7 @@
                 "name": "Premium_LRS",
                 "tier": "Premium"
             }
-        },
+        },*/
         {
             "name": "pip-dc-test-eus-1",
             "type": "Microsoft.Network/publicIPAddresses",
