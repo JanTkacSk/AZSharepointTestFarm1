@@ -302,7 +302,7 @@
                     "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/installadds.ps1",
                     "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/CreateADUsers.ps1"
                 ],
-                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1 && powershell.exe -ExecutionPolicy Unrestricted -File CreateADUsers.ps1"
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1" // && powershell.exe -ExecutionPolicy Unrestricted -File CreateADUsers.ps1"
                 }
             }
         }
