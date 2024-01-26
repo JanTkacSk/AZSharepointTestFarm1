@@ -300,7 +300,7 @@
                 "settings": {
                 "fileUris": [
                     "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/installadds.ps1",
-                    "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/InstallADDSForest.ps1",
+                    "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/InstallADDSForest.ps1"
                 ],
                 "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installadds.ps1 &&  powershell.exe -ExecutionPolicy Unrestricted -File InstallADDSForest.ps1"
                 }
