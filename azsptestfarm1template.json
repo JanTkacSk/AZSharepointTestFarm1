@@ -275,7 +275,7 @@
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', 'nic-01-dc-test-1')]"
                         }
                     ]
-                },
+                }
                 /*"diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": false,
@@ -287,12 +287,13 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-04-01",
-            "name": "InstallADDS-and-Forest",
+            "name": "vm-dc-test-1/InstallADDS-and-Forest",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
             ],
             "properties": {
+                "provisionAfterExtensions": [],
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.7",
@@ -306,7 +307,7 @@
                 }
             }
         },
-                {
+        {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-04-01",
             "name": "vm-dc-test-1/AddUsers",
@@ -315,7 +316,7 @@
                 "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
             ],
             "properties": {
-                "provisionAfterExtensions": ["InstallADDS-and-Forest"],
+                "provisionAfterExtensions": ["vm-dc-test-1/InstallADDS-and-Forest"],
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.7",
