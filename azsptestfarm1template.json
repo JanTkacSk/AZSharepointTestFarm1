@@ -293,7 +293,6 @@
                 "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
             ],
             "properties": {
-                "provisionAfterExtensions": [],
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.7",
@@ -316,7 +315,6 @@
                 "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
             ],
             "properties": {
-                "provisionAfterExtensions": ["vm-dc-test-1/InstallADDS-and-Forest"],
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.7",
