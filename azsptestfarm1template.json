@@ -312,7 +312,8 @@
             "name": "vm-dc-test-1/AddUsers",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]"
+                "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]",
+                "[resourceId('Microsoft.Resources/deploymentScripts', 'Remove-InstallADDS-and-Forest')]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -326,7 +327,24 @@
                 "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File CreateADUsers.ps1 "
                 }
             }
+        },
+        {
+            "type": "Microsoft.Resources/deploymentScripts",
+            "apiVersion": "2020-10-01",
+            "name": "Remove-InstallADDS-and-Forest",
+            "location": "[resourceGroup().location]",
+            "dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-dc-test-1','InstallADDS-and-Forest')]"],
+            "kind": "AzurePowerShell",
+            "properties": {
+                "arguments": "string",
+                "azPowerShellVersion": "az10.0",
+                "cleanupPreference": "OnSuccess",
+                "retentionInterval": "P1D",
+                "scriptContent": "Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name InstallADDS-and-Forest -VMName vm-dc-test-1",
+                "timeout": "PT30M"
+            }
         }
+
     ],
     "outputs": {
         /*"storageAccountName": {
