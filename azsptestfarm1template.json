@@ -337,7 +337,7 @@
             "kind": "AzurePowerShell",
             "properties": {
                 "arguments": "string",
-                "azPowerShellVersion": "az10.0",
+                "azPowerShellVersion": "10.0",
                 "cleanupPreference": "OnSuccess",
                 "retentionInterval": "P1D",
                 "scriptContent": "Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name InstallADDS-and-Forest -VMName vm-dc-test-1",
