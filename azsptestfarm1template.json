@@ -306,6 +306,7 @@
                 }
             }
         },
+        /*
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-04-01",
@@ -328,6 +329,8 @@
                 }
             }
         },
+        */
+        /*
         {
             "type": "Microsoft.Resources/deploymentScripts",
             "apiVersion": "2020-10-01",
@@ -337,13 +340,15 @@
             "kind": "AzurePowerShell",
             "properties": {
                 "arguments": "string",
-                "azPowerShellVersion": "az10.0",
+                "azPowerShellVersion": "10.0",
                 "cleanupPreference": "OnSuccess",
                 "retentionInterval": "P1D",
                 "scriptContent": "Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name InstallADDS-and-Forest -VMName vm-dc-test-1",
                 "timeout": "PT30M"
             }
         }
+
+        */
 
     ],
     "outputs": {
