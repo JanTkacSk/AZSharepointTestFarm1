@@ -16,8 +16,14 @@
             "apiVersion": "2020-10-01",
             "name": "Remove-InstallADDS-and-Forest",
             "location": "[resourceGroup().location]",
-            "dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-dc-test-1','InstallADDS-and-Forest')]"],
+            //"dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-dc-test-1','InstallADDS-and-Forest')]"],
             "kind": "AzurePowerShell",
+            "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'id-dc-test-eus-001')]": {}
+            }
+            },
             "properties": {
                 "arguments": "string",
                 "azPowerShellVersion": "10.0",
