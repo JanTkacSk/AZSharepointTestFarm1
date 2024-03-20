@@ -10,12 +10,12 @@
         "apiVersion": "2020-10-01",
         "name": "Remove-InstallADDS-and-Forest",
         "location": "[resourceGroup().location]",
-        //"dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-dc-test-1','InstallADDS-and-Forest')]"],
+        //"dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-linux-test-t','CustomScript1')]"],
         "kind": "AzurePowerShell",
         "identity": {
         "type": "UserAssigned",
         "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'id-dc-test-eus-001')]": {}
+            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'testidentity')]": {}
         }
         },
         "properties": {
@@ -23,7 +23,7 @@
             "azPowerShellVersion": "10.0",
             "cleanupPreference": "OnSuccess",
             "retentionInterval": "P1D",
-            "scriptContent": "get-azsubscription | Select-AzSubscription; Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name InstallADDS-and-Forest -VMName vm-dc-test-1 -force",
+            "scriptContent": "get-azsubscription | Select-AzSubscription; Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name CustomScript1 -VMName vm-linux-test-1 -force",
             "timeout": "PT30M"
         }
     }
