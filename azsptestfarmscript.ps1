@@ -1,8 +1,11 @@
 $RGName = "rg-shp-test-eus-1"
 New-AzResourceGroup $RGName -Location eastus
 
-#Network and Domain Controller
-New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\azsptestfarm1template.json
+#Virtual networks, ip interfaces, ips, nsgs, application groups
+New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\NetworkTemplate.json
+
+#Domain controller
+New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\DCTemplate.json
 
 #Custom VNET DNS
 New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\SetCustomDNSInVNET.json

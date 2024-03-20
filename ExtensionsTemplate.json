@@ -1,0 +1,55 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+                {
+            "name": "id-dc-test-eus-001",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2023-01-31",
+            "location": "[resourceGroup().location]"
+        }, 
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2021-04-01",
+            "name": "vm-dc-test-1/AddUsers",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]",
+                "[resourceId('Microsoft.Resources/deploymentScripts', 'Remove-InstallADDS-and-Forest')]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                "fileUris": [
+                    "https://raw.githubusercontent.com/JanTkacSk/AZSharepointTestFarm1/main/CreateADUsers.ps1"
+                ],
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File CreateADUsers.ps1 "
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deploymentScripts",
+            "apiVersion": "2020-10-01",
+            "name": "Remove-InstallADDS-and-Forest",
+            "location": "[resourceGroup().location]",
+            "dependsOn":["[resourceId('Microsoft.Compute/virtualMachines/extensions', 'vm-dc-test-1','InstallADDS-and-Forest')]"],
+            "kind": "AzurePowerShell",
+            "properties": {
+                "arguments": "string",
+                "azPowerShellVersion": "10.0",
+                "cleanupPreference": "OnSuccess",
+                "retentionInterval": "P1D",
+                "scriptContent": "get-azsubscription | Select-AzSubscription; Remove-AzVMExtension -ResourceGroupName rg-shp-test-eus-1 -Name InstallADDS-and-Forest -VMName vm-dc-test-1 -force",
+                "timeout": "PT30M"
+            }
+        }
+
+    ],
+    "outputs": {}
+}
