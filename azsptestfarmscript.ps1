@@ -4,8 +4,11 @@ New-AzResourceGroup $RGName -Location eastus
 #Virtual networks, ip interfaces, ips, nsgs, application groups
 New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\NetworkTemplate.json
 
-#Domain controller
+#Domain controller VM and an extension to install the ADDS and domain.
 New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\DCTemplate.json
+
+#User assigned managed identity, deployment and a new extension to create users
+New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\ExtensionTemplate.json
 
 #Custom VNET DNS
 New-AZResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile .\SetCustomDNSInVNET.json
