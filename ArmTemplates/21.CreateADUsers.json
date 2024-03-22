@@ -5,7 +5,7 @@
     "functions": [],
     "variables": {},
     "resources": [
-                {
+        /*{
             "name": "id-dc-test-eus-001",
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
             "apiVersion": "2023-01-31",
@@ -33,6 +33,7 @@
                 "timeout": "PT30M"
             }
         },
+        */
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-04-01",
@@ -40,7 +41,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 //"[format('Microsoft.Compute/virtualMachines/{0}', 'vm-dc-test-1')]",
-                "[resourceId('Microsoft.Resources/deploymentScripts', 'Remove-InstallADDS-and-Forest')]"
+                //"[resourceId('Microsoft.Resources/deploymentScripts', 'Remove-InstallADDS-and-Forest')]"
             ],
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -55,6 +56,7 @@
                 }
             }
         }
+
     ],
     "outputs": {}
 }
